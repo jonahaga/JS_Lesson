@@ -1,22 +1,10 @@
-// var StarShip = function(designation, registryNumber, crewComplement){
-//     this.designation = designation || "Unknown Designation";
-//     this.registryNumber = registryNumber || "registryNumber";
-//     this.crewComplement = crewComplement || 0;
-// }
-
-// var enterprise = new StarShip("Enterprise", "NCC-1701-D", 1014);
-// var birdofPrey = new StarShip("IKS Koraga", "K'Vort", "25")
-
-// console.log(birdofPrey);
-
-
 var Book = function(bookTitle, genre, author, read, readDate){
     this.bookTitle = bookTitle || "untitled";
     this.genre = genre || "ungenre";
     this.author = author || "anonymous";
     this.read = read || false;
     this.readDate = new Date(readDate) || '';
-}
+};
 
 var BookList = function(booksRead, notRead, bookShelf) {
     this.booksRead = booksRead || 0;
@@ -27,21 +15,21 @@ var BookList = function(booksRead, notRead, bookShelf) {
     
     this.getCurrentBook = function(){
        return this.bookShelf[this.currentBookIndex];
-    }
+    };
     this.getNextBook = function(){
         // In Py, randInt(len(range()))
         this.currentBookIndex = Math.floor(Math.random() * this.bookShelf.length);
         return this.bookShelf[this.currentBookIndex];
-    }
+    };
     this.addBook = function(book){
         this.bookShelf.push(book); // adds item to end of array  
-    }
+    };
     this.finishCurrentBook = function(){
         this.booksRead += 1;
         this.notRead -= 1;
         this.getCurrentBook().read = true;
         this.getCurrentBook().readDate = new Date();
-        var unreadList = []
+        var unreadList = [];
         for (i = 0; i < this.bookShelf.length; i++){
             book = this.bookShelf[i];
             if (book.read == false){
@@ -50,12 +38,12 @@ var BookList = function(booksRead, notRead, bookShelf) {
         }
         var n = Math.floor(Math.random() * unreadList.length);
         this.currentBookIndex = unreadList[n];
-    }
-}
+    };
+};
 
 var BookBoss = function(BookList, Book){
     BookList.addBook(Book);
-}
+};
 
 var book1 = new Book("War and Peace", "Fiction", "Leo Tolstoy", true, '3/2/14');
 var book2 = new Book("Anna Karenina", "Fiction", "Leo Tolstoy", false);
